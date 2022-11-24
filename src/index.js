@@ -6,6 +6,7 @@ import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import LandingPage from "./components/LandingPage";
 import Category from "./Category";
+import ProductDetail from "./ProductDetail";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path="/" element={<LandingPage />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<SignUp />} />
+            <Route path="/product" element={<ProductDetail />} />
           </Routes>
         </BrowserRouter>
       </StrictMode>

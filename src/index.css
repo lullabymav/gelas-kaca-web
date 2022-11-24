@@ -77,3 +77,30 @@ code {
 .footer-info div div h2 {
   color: #4839f4;
 }
+
+.stretched-link {
+  @apply absolute inset-0 z-10;
+}
+
+/* breadcrumb */
+
+ul.breadcrumb {
+  @apply flex flex-row items-center text-lg;
+}
+
+ul.breadcrumb li:not(:last-child):after {
+  content: "/";
+  @apply px-4;
+}
+
+ul.breadcrumb li:not(:last-child) a {
+  @apply font-light;
+}
+
+ul.breadcrumb li:last-child a {
+  @apply font-semibold;
+}
+
+.read-more {
+  color: #4839f4;
+}
