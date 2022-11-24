@@ -24,7 +24,7 @@ function Category() {
           />
           <Filter
             name1="Beta Three"
-            name2="Homoculus"
+            name2="Homonculus"
             name3="Bala"
             name4="Beta"
           />
