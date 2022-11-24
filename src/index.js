@@ -7,6 +7,8 @@ import SignUp from "./components/SignUp";
 import LandingPage from "./components/LandingPage";
 import Category from "./Category";
 import ProductDetail from "./ProductDetail";
+import Cart from "./Cart";
+import Confirm from "./Confirm";
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<SignUp />} />
             <Route path="/product" element={<ProductDetail />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/confirm" element={<Confirm />} />
           </Routes>
         </BrowserRouter>
       </StrictMode>

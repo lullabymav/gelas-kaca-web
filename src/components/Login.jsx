@@ -56,13 +56,20 @@ function Login() {
               <a href="./" className="forget-input text-xs float-right mt-1">
                 Forgot Password?
               </a>
-              <button type="submit" className="Register-btn font-bold shadow">
-                Login
-              </button>
+              <Link to="/">
+                <button type="submit" className="Register-btn font-bold shadow">
+                  Login
+                </button>
+              </Link>
               <br />
-              <button type="button" className="Register-input font-bold shadow">
-                Sign Up
-              </button>
+              <Link to="/register">
+                <button
+                  type="button"
+                  className="Register-input font-bold shadow"
+                >
+                  Sign Up
+                </button>
+              </Link>
             </form>
           </section>
         </article>
