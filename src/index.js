@@ -9,6 +9,8 @@ import Category from "./Category";
 import ProductDetail from "./ProductDetail";
 import Cart from "./Cart";
 import Confirm from "./Confirm";
+import Success from "./Success";
+import Approve from "./PaymentApprove";
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
             <Route path="/product" element={<ProductDetail />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/confirm" element={<Confirm />} />
+            <Route path="/success" element={<Success />} />
+            <Route path="/approve" element={<Approve />} />
           </Routes>
         </BrowserRouter>
       </StrictMode>
