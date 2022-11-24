@@ -11,24 +11,6 @@ function Login() {
           <img src={loginPic} className="Login-pic" alt="login-pic" />
         </aside>
         <article className="Login-form">
-          <section className="Login-btn-cancel float-right">
-            <button>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={2}
-                stroke="red"
-                className="w-12 h-12 m-2"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-            </button>
-          </section>
           <section className="Login-form-input my-28 mx-40">
             <Link to="/">
               <img src={logo} className="Login-logo h-12 mb-6" alt="logo-alt" />
