@@ -1,6 +1,7 @@
 import "./../index.css";
 import { Link } from "react-router-dom";
-import NavRegist from "./Nav-Regist";
+import NavRegist from "./NavRegist";
+import NavDashboard from "./NavDashboard";
 import logo from "./../asset/logo.png";
 
 function Navbar() {
@@ -11,7 +12,7 @@ function Navbar() {
           <Link to="/">
             <img src={logo} className="h-10" alt="logo-alt" />
           </Link>
-          <ul className="flex m-3 ml-12 text-xs font-bold gap-8">
+          <ul className="flex m-3 ml-12 text-xs font-semibold gap-8">
             <li>
               <Link to="/category">CATEGORY</Link>
             </li>
@@ -19,7 +20,7 @@ function Navbar() {
               <a href="#about">ABOUT US</a>
             </li>
             <li>
-              <a href="#contact">CONTACT</a>
+              <a href="#contact">CONTACTS</a>
             </li>
           </ul>
         </section>
@@ -38,7 +39,9 @@ function Navbar() {
               d="M15.75 15.75l-2.489-2.489m0 0a3.375 3.375 0 10-4.773-4.773 3.375 3.375 0 004.774 4.774zM21 12a9 9 0 11-18 0 9 9 0 0118 0z"
             />
           </svg>
-          <NavRegist />
+          {/* <NavRegist /> */}
+          <NavDashboard />
+          {/* Setelah regist, NavRegist akan berganti ke username customer */}
         </section>
       </nav>
     </div>

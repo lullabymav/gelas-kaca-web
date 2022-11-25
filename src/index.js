@@ -11,6 +11,8 @@ import Cart from "./Cart";
 import Confirm from "./Confirm";
 import Success from "./Success";
 import Approve from "./PaymentApprove";
+import History from "./components/History";
+import HistoryUpcoming from "./components/HistoryUpcoming";
 
 function App() {
   return (
@@ -27,6 +29,9 @@ function App() {
             <Route path="/confirm" element={<Confirm />} />
             <Route path="/success" element={<Success />} />
             <Route path="/approve" element={<Approve />} />
+            <Route path="/history" element={<History />} />
+            <Route path="/upcoming" element={<HistoryUpcoming />} />
+            {/* <Route path="/profile" element={<Profile />} /> */}
           </Routes>
         </BrowserRouter>
       </StrictMode>
