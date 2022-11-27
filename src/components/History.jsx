@@ -54,7 +54,7 @@ function History(){
                                             </li>
                                             <li id="action" className="flex-none w-auto">
                                                 <div className="flex gap-2">
-                                                    <button className="w-auto bg-blue-500 text-white shadow rounded-2xl p-2 hover:btn-in hover:opacity-90">Process Lanjut</button>
+                                                    <button className="w-auto btn-in text-white shadow rounded-2xl p-2 hover:btn-in hover:opacity-90">Process Lanjut</button>
                                                     <button className="w-auto border border-black shadow rounded-2xl p-2 hover:btn-in hover:shadow-md">Bantuan</button>
                                                 </div>
                                             </li>

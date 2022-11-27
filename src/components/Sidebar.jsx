@@ -15,12 +15,12 @@ function Sidebar(){
                 </div>
                 <ul class="space-y-2">
                     <li>
-                        <Link href="#" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <Link to="/profile" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-blue-700">
                             <span class="ml-1 font-semibold text-lg">My Account</span>
                         </Link>
                     </li>
                     <li>
-                        <Link href="#" class="flex items-center p-2 text-base font-normal text-blue-700 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <Link to="/history" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-blue-700">
                             <span class="ml-1 font-semibold text-lg">My Rental</span>
                         </Link>
                     </li>

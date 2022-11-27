@@ -98,7 +98,6 @@ function Approve() {
           </div>
         </div>
       </div>
-      <hr className="my-12" />
       <Footer className="mb-12" />
     </div>
   );

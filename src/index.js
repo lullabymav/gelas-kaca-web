@@ -13,6 +13,7 @@ import Success from "./Success";
 import Approve from "./PaymentApprove";
 import History from "./components/History";
 import Dashboard from "./components/Dashboard";
+import Profile from "./components/Profile";
 
 function App() {
   return (
@@ -31,7 +32,7 @@ function App() {
             <Route path="/success" element={<Success />} />
             <Route path="/approve" element={<Approve />} />
             <Route path="/history" element={<History />} />
-            {/* <Route path="/profile" element={<Profile />} /> */}
+            <Route path="/profile" element={<Profile />} />
           </Routes>
         </BrowserRouter>
       </StrictMode>
