@@ -19,7 +19,7 @@ function Confirm() {
                 className="w-9/12 mx-auto mb-8"
               />
               <h2 class="text-3xl font-semibold mb-6">
-                Penyewaan Kamu sedang dikonfimasi{" "}
+                Penyewaan Kamu Sedang Dikonfimasi{" "}
               </h2>
               <p class="text-lg mb-12">
                 Penyewaan yang anda lakukan sekarang sedang dikonfimasi oleh
@@ -39,6 +39,7 @@ function Confirm() {
                 duration-200
                 px-8
                 cursor-pointer
+                hover:btn-in hover:opacity-70
               "
               >
                 Lihat Status

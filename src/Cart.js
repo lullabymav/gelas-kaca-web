@@ -172,7 +172,7 @@ function Cart() {
                       text-sm
                       focus:border-blue-200 focus:outline-none
                     "
-                        placeholder="Masukkan tanggal persipan acara"
+                        placeholder="Masukkan tanggal persiapan acara"
                       />
                     </div>
 

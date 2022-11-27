@@ -70,7 +70,7 @@ function NavDashboard() {
             <div class="py-1" role="none">
               <Link
                 to="/profile"
-                class="text-gray-700 block px-4 py-2 text-sm"
+                class="text-gray-600 block px-4 py-2 text-sm hover:text-black"
                 role="menuitem"
                 tabindex="-1"
                 id="menu-item-0"
@@ -79,7 +79,7 @@ function NavDashboard() {
               </Link>
               <Link
                 to="/history"
-                class="text-gray-700 block px-4 py-2 text-sm"
+                class="text-gray-600 block px-4 py-2 text-sm hover:text-black"
                 role="menuitem"
                 tabindex="-1"
                 id="menu-item-1"
@@ -89,7 +89,7 @@ function NavDashboard() {
               <form method="POST" action="/" role="none">
                 <button
                   type="submit"
-                  class="text-gray-700 block w-full px-4 py-2 text-left text-sm"
+                  class="text-gray-600 block w-full px-4 py-2 text-left text-sm hover:text-black"
                   role="menuitem"
                   tabindex="-1"
                   id="menu-item-3"

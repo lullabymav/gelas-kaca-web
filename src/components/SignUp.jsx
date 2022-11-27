@@ -70,7 +70,7 @@ function SignUp() {
               />
               <br />
               <Link to="/login">
-                <button type="submit" className="Register-btn font-bold shadow">
+                <button type="submit" className="Register-btn font-bold shadow hover:btn-in hover:opacity-90">
                   Sign Up
                 </button>
               </Link>

@@ -39,7 +39,7 @@ function Login() {
                 Forgot Password?
               </a>
               <Link to="/">
-                <button type="submit" className="Register-btn font-bold shadow">
+                <button type="submit" className="Register-btn font-bold shadow hover:btn-in hover:opacity-90">
                   Login
                 </button>
               </Link>
@@ -47,7 +47,7 @@ function Login() {
               <Link to="/register">
                 <button
                   type="button"
-                  className="Register-input font-bold shadow"
+                  className="Register-input font-bold shadow hover:btn-in hover:opacity-90"
                 >
                   Sign Up
                 </button>
