@@ -1,6 +1,6 @@
 import "./../index.css";
 import { Link } from "react-router-dom";
-import NavRegist from "./NavRegist";
+// import NavRegist from "./NavRegist";
 import NavDashboard from "./NavDashboard";
 import logo from "./../asset/logo.png";
 

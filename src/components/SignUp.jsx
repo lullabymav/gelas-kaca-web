@@ -69,9 +69,11 @@ function SignUp() {
                 className="Register-input mb-2 shadow text-gray-700 focus:outline-none"
               />
               <br />
-              <button type="submit" className="Register-btn font-bold shadow">
-                Sign Up
-              </button>
+              <Link to="/login">
+                <button type="submit" className="Register-btn font-bold shadow">
+                  Sign Up
+                </button>
+              </Link>
               <br />
             </form>
           </section>
