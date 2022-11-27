@@ -19,7 +19,7 @@ function Cart() {
         <Navbar />
       </div>
       <div>
-        <section className="bg-gray-100 py-8 px-4">
+        <section className="bg-gray-100 py-8 px-12">
           <div className="container mx-auto">
             <ul className="breadcrumb">
               <li>
@@ -34,7 +34,7 @@ function Cart() {
           </div>
         </section>
         <section className="md:py-16">
-          <div className="container mx-12 px-4">
+          <div className="container px-12">
             <div className="flex -mx-4 flex-wrap">
               <div
                 className="w-full px-4 mb-4 md:w-8/12 md:mb-0"
@@ -50,7 +50,7 @@ function Cart() {
                 md:border-b-0
               "
                 >
-                  <h3 className="text-2xl">Daftar Sewa Barang</h3>
+                  <h3 className="text-2xl font-semibold">Daftar Sewa Barang</h3>
                 </div>
 
                 <div className="border-b border-gray-200 mb-4 hidden md:block">
@@ -76,7 +76,7 @@ function Cart() {
                       </div>
                     </div>
                     <div className="px-4 w-2/12">
-                      <div className="text-center">
+                      <div className="">
                         <h6>Aksi</h6>
                       </div>
                     </div>
@@ -86,20 +86,10 @@ function Cart() {
                   {items.map((item) => {
                     return (
                       <div>
-                        <div
-                          className="flex flex-start flex-wrap items-center mb-4 -mx-4"
-                          data-row="1"
-                        >
+                        <div className="flex flex-start flex-wrap items-center mb-4 -mx-4" data-row="1">
                           <div className="px-4 flex-none">
-                            <div
-                              className=""
-                              style={{ width: "90px", height: "90px" }}
-                            >
-                              <img
-                                src=""
-                                alt="chair-1"
-                                className="object-cover rounded-xl w-full h-full"
-                              />
+                            <div className="" style={{ width: "90px", height: "90px" }}>
+                              <img src="" alt="chair-1" className="object-cover rounded-xl w-full h-full"/>
                             </div>
                           </div>
                           <div className="px-4 w-auto flex-1 md:w-3/12 md:block">
@@ -110,55 +100,27 @@ function Cart() {
                               <span className="text-sm md:text-lg">
                                 {item.type}
                               </span>
-                              <h6
-                                className="
-                          font-semibold
-                          text-base
-                          md:text-lg
-                          block
-                          md:hidden
-                        "
-                              >
-                                Rp {item.price}
+                              <h6 className="font-semibold text-base md:text-lg block md:hidden">
+                                Rp{item.price}
                               </h6>
                             </div>
                           </div>
-                          <div
-                            className="
-                      px-4
-                      w-auto
-                      flex-none
-                      md:flex-1 md:w-3/12
-                      hidden
-                      md:block
-                      md:text-center
-                    "
-                          >
+                          <div className="px-4 w-auto flex-none md:flex-1 md:w-3/12 hidden md:block md:text-center">
                             <div className="">
                               <h6 className="font-semibold text-lg">
                                 {item.kuantitas}
                               </h6>
                             </div>
                           </div>
-                          <div
-                            className="
-                      px-4
-                      w-auto
-                      flex-none
-                      md:flex-1 md:w-3/12
-                      hidden
-                      md:block
-                      md:text-center
-                    "
-                          >
+                          <div className="px-4 w-auto flex-none md:flex-1 md:w-3/12 hidden md:block md:text-center">
                             <div className="">
                               <h6 className="font-semibold text-lg">
-                                Rp {item.price}
+                                Rp{item.price}
                               </h6>
                             </div>
                           </div>
                           <div className="px-4 w-2/12">
-                            <div className="text-center">
+                            <div className="">
                               <button
                                 className="
                           text-red-600
@@ -190,7 +152,7 @@ function Cart() {
                 <div className="bg-gray-100 px-4 py-6 md:p-8 md:rounded-3xl">
                   <form>
                     <div className="flex flex-start mb-6">
-                      <h3 className="text-2xl">Detail Events</h3>
+                      <h3 className="text-2xl font-semibold">Detail Events</h3>
                     </div>
 
                     <div className="flex flex-col mb-4">
@@ -259,11 +221,11 @@ function Cart() {
                   <div className="my-8">
                     <div className="flex flex-row justify-between">
                       <div className="">Subtotal</div>
-                      <div>Rp 50.000</div>
+                      <div>Rp50.000</div>
                     </div>
                     <div className="flex flex-row justify-between">
                       <div className="">Delivery Fee</div>
-                      <div>Rp 30.000</div>
+                      <div>Rp30.000</div>
                     </div>
                     <hr />
                     <div className="flex flex-row justify-between">
@@ -271,7 +233,7 @@ function Cart() {
                         Total
                       </div>
                       <div className="text-lg font-semibold read-more">
-                        Rp 80.000
+                        Rp80.000
                       </div>
                     </div>
                   </div>
@@ -303,7 +265,6 @@ function Cart() {
           </div>
         </section>
       </div>
-      <hr className="my-12" />
       <Footer className="mb-12" />
     </div>
   );

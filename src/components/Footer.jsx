@@ -5,6 +5,7 @@ import logo from "./../asset/logo.png";
 function Footer() {
   return (
     <div>
+      <hr className="my-12"/>
       <footer className="footer">
         <section className="footer-logo flex justify-center m-10">
           <img src={logo} className="h-10" alt="logo-alt" />

@@ -10,7 +10,7 @@ function Confirm() {
         <Navbar />
       </div>
       <section class="">
-        <div class="container mx-12">
+        <div class="container">
           <div class="flex flex-col items-center justify-center">
             <div class="w-full md:w-4/12 text-center">
               <img
@@ -27,7 +27,7 @@ function Confirm() {
                 pembayaran
               </p>
               <Link
-                to="/status"
+                to="/history"
                 class="
                 btn-in
                 focus:outline-none
@@ -47,7 +47,6 @@ function Confirm() {
           </div>
         </div>
       </section>
-      <hr className="my-12" />
       <Footer className="mb-12" />
     </div>
   );

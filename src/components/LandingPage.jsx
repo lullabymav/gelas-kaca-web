@@ -53,6 +53,7 @@ function LandingPage() {
                     <Product />
                     <Product />
                 </div>
+                {/* Page Navigation */}
                 <div className='flex justify-center'>    
                     <nav aria-label="Page navigation">
                         <ul class="inline-flex items-center -space-x-px">
@@ -91,7 +92,6 @@ function LandingPage() {
                 </div>
             </div>
             <div>
-                <hr />
                 <Footer />
             </div>
         </div>
