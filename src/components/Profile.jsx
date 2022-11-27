@@ -63,7 +63,7 @@ function Profile(){
                             </section>
                         </section>
                         <section className="flex justify-center">
-                            <button type="submit" className="mt-16 btn-in shadow text-black font-semibold hover:btn-in hover:opacity-70 focus:outline-none py-1 px-6 w-52 rounded-xl text-lg focus:text-black transition-all duration-200">
+                            <button type="submit" className="mt-16 btn-in shadow text-black font-semibold hover:btn-in hover:opacity-70 focus:outline-none py-1 px-6 w-52 rounded-xl text-lg">
                                 Save
                             </button>
                         </section>

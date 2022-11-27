@@ -7,7 +7,8 @@ import logo from "./../asset/login-pic.png"
 const items = [
     {
         id: "223SDJ34",
-        name: "Speaker Kecil",
+        name: "Speaker Kecil", 
+        // pic: "./../asset/login-pic.png",
         type: "Sound System",
         kuantitas: 1,
         date: "13/12/2022",

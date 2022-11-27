@@ -250,9 +250,6 @@ function Cart() {
                     py-3
                     rounded-full
                     text-lg
-                    focus:text-black
-                    transition-all
-                    duration-200
                     px-6
                   "
                     >
