@@ -15,6 +15,7 @@ import History from "./components/History";
 import Dashboard from "./components/Dashboard";
 import Profile from "./components/Profile";
 import Proof from "./components/Proof";
+import List from "./components/List";
 
 function App() {
   return (
@@ -34,7 +35,8 @@ function App() {
             <Route path="/approve" element={<Approve />} />
             <Route path="/history" element={<History />} />
             <Route path="/profile" element={<Profile />} />
-            <Route path="/proof" element={<Proof/>} />
+            <Route path="/proof" element={<Proof />} />
+            <Route path="/list" element={<List />} />
           </Routes>
         </BrowserRouter>
       </StrictMode>
