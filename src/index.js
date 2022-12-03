@@ -10,7 +10,6 @@ import ProductDetail from "./ProductDetail";
 import Cart from "./Cart";
 import Confirm from "./Confirm";
 import Success from "./Success";
-import Approve from "./PaymentApprove";
 import History from "./components/History";
 import Dashboard from "./components/Dashboard";
 import Profile from "./components/Profile";
@@ -32,7 +31,6 @@ function App() {
             <Route path="/cart" element={<Cart />} />
             <Route path="/confirm" element={<Confirm />} />
             <Route path="/success" element={<Success />} />
-            <Route path="/approve" element={<Approve />} />
             <Route path="/history" element={<History />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/proof" element={<Proof />} />
