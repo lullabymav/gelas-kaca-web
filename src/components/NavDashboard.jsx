@@ -4,6 +4,10 @@ import { Link } from "react-router-dom";
 
 // const profileList = ["Akun Saya", "Status Penyewaan Saya", "Riwayat Penyewaan"];
 
+const data = {
+  username: "Andrew"
+}
+
 function NavDashboard() {
   const [profile, setProfile] = useState(false);
 
@@ -41,7 +45,7 @@ function NavDashboard() {
                 console.log(profile);
               }}
             >
-              Hi, Andrew
+              Hi, {data.username}
               <svg
                 class="-mr-1 ml-2 h-5 w-5"
                 xmlns="http://www.w3.org/2000/svg"

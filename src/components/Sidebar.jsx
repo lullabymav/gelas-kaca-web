@@ -1,5 +1,9 @@
 import { Link } from "react-router-dom";
 
+const data = {
+    username: "Andrew"
+}
+
 function Sidebar(){
     return(
         <aside class="w-56 mr-5" aria-label="Sidebar">
@@ -7,7 +11,7 @@ function Sidebar(){
                 <div className="flex gap-4 mb-6">
                     <img src="" className="w-12 h-12 rounded-full bg-gray-300" alt="" />
                     <section>
-                        <p className="font-semibold">Andrew</p>
+                        <p className="font-semibold">{data.username}</p>
                         <Link to="/profile">
                             <p className="text-gray-500 text-sm">Edit Profile</p>
                         </Link>

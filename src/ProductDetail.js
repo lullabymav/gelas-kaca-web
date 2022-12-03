@@ -116,7 +116,7 @@ function ProductDetail() {
                       Tambahkan ke Keranjang
                     </button>
                   </Link>
-                  <Link to="/">
+                  <Link to="/cart">
                     <button
                       className="transition-all duration-200 btn-in rounded-full px-8 py-1 mt-4 inline-flex hover:btn-in hover:opacity-70">
                       Sewa Sekarang
