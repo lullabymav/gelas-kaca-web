@@ -14,6 +14,7 @@ import Approve from "./PaymentApprove";
 import History from "./components/History";
 import Dashboard from "./components/Dashboard";
 import Profile from "./components/Profile";
+import Proof from "./components/Proof";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
             <Route path="/approve" element={<Approve />} />
             <Route path="/history" element={<History />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/proof" element={<Proof/>} />
           </Routes>
         </BrowserRouter>
       </StrictMode>

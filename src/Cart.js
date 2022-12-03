@@ -253,7 +253,7 @@ function Cart() {
                     px-6
                   "
                     >
-                      Kirim Permintaan Sewa
+                      Ajukan Sewa
                     </Link>
                   </div>
                 </div>

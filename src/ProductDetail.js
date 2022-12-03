@@ -82,7 +82,8 @@ function ProductDetail() {
                   {data.productDesc}
                   <Link to="/rincian" className="read-more">
                     {" "}
-                    Baca Lebih Lanjut
+                    <br/>
+                    Read More....
                   </Link>
                 </p>
                 <div className="flex flex-row gap-4 items-center">
@@ -108,12 +109,20 @@ function ProductDetail() {
                   </div>
                 </div>
 
-                <Link to="/cart">
-                  <button
-                    className="transition-all duration-200 btn-in rounded-full px-8 py-3 mt-4 inline-flex hover:btn-in hover:opacity-70">
-                    Tambahkan ke Keranjang
-                  </button>
-                </Link>
+                <section className="flex gap-4">
+                  <Link to="/cart">
+                    <button
+                      className="transition-all duration-200 btn-up rounded-full px-8 py-1 mt-4 inline-flex hover:btn-in hover:opacity-70">
+                      Tambahkan ke Keranjang
+                    </button>
+                  </Link>
+                  <Link to="/">
+                    <button
+                      className="transition-all duration-200 btn-in rounded-full px-8 py-1 mt-4 inline-flex hover:btn-in hover:opacity-70">
+                      Sewa Sekarang
+                    </button>
+                  </Link>
+                </section>
               </div>
             </div>
           </section>
