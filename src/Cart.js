@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
@@ -13,6 +14,24 @@ const items = [
 ];
 
 function Cart() {
+    const [rentDate, setRentDate] = useState('')
+    const [returnDate, setReturnDate] = useState('')
+    const [vanue, setVanue] = useState('')
+    //const history = useHistory();
+  
+    const saveRent = async(e) => {
+      e.preventDefault();
+      const rent = {rentDate, returnDate, vanue}
+      await fetch("", {
+        method: "POST", 
+        body: JSON.stringify(rent),
+        headers:{
+          'Content-Type': 'application/json'
+        }
+      })
+      history.push("/")
+    }
+
   return (
     <div>
       <div className="my-8 mx-12">
@@ -150,7 +169,7 @@ function Cart() {
               </div>
               <div className="w-full md:px-4 md:w-4/12" id="shipping-detail">
                 <div className="bg-gray-100 px-4 py-6 md:p-8 md:rounded-3xl">
-                  <form>
+                  <form onSubmit={saveRent}>
                     <div className="flex flex-start mb-6">
                       <h3 className="text-2xl font-semibold">Detail Events</h3>
                     </div>
@@ -159,19 +178,9 @@ function Cart() {
                       <label for="complete-name" className="text-sm mb-2">
                         Tanggal Persiapan
                       </label>
-                      <input
-                        data-input
-                        type="date"
-                        id="event-date"
-                        className="
-                      border-gray-200 border
-                      rounded-lg
-                      px-4
-                      py-2
-                      bg-white
-                      text-sm
-                      focus:border-blue-200 focus:outline-none
-                    "
+                      <input data-input type="date" id="event-date" value={rentDate} 
+                        onChange={(e) => setRentDate(e.target.value)} 
+                        className="border-gray-200 border rounded-lg px-4 py-2 bg-white text-sm focus:border-blue-200 focus:outline-none" 
                         placeholder="Masukkan tanggal persiapan acara"
                       />
                     </div>
@@ -180,19 +189,9 @@ function Cart() {
                       <label for="return-date" className="text-sm mb-2">
                         Tanggal Kembali
                       </label>
-                      <input
-                        data-input
-                        type="date"
-                        id="tanggal-kemblai"
-                        className="
-                      border-gray-200 border
-                      rounded-lg
-                      px-4
-                      py-2
-                      bg-white
-                      text-sm
-                      focus:border-blue-200 focus:outline-none
-                    "
+                      <input data-input type="date" id="tanggal-kembali" value={returnDate}
+                        onChange={(e) => setReturnDate(e.target.value)}
+                        className="border-gray-200 border rounded-lg px-4 py-2bg-white text-sm focus:border-blue-200 focus:outline-none"
                         placeholder="Masukkan tanggal pengembalian"
                       />
                     </div>
@@ -201,23 +200,14 @@ function Cart() {
                       <label for="address" className="text-sm mb-2">
                         Lokasi Acara
                       </label>
-                      <input
-                        data-input
-                        type="text"
-                        id="address"
-                        className="
-                      border-gray-200 border
-                      rounded-lg
-                      px-4
-                      py-2
-                      bg-white
-                      text-sm
-                      focus:border-blue-200 focus:outline-none
-                    "
+                      <input data-input type="text" id="address" value={vanue}
+                        onChange={(e) => setVanue(e.target.value)}
+                        className="border-gray-200 border rounded-lg px-4 py-2 bg-white text-sm focus:border-blue-200 focus:outline-none"
                         placeholder="Masukkan Lokasi Acara"
                       />
                     </div>
                   </form>
+
                   <div className="my-8">
                     <div className="flex flex-row justify-between">
                       <div className="">Subtotal</div>
@@ -239,20 +229,8 @@ function Cart() {
                   </div>
                   <div className="text-center">
                     <Link
-                      to="/confirm"
-                      type="submit"
-                      className="
-                    btn-in
-                    text-black
-                    hover:btn-in hover:opacity-70
-                    focus:outline-none
-                    w-full
-                    py-3
-                    rounded-full
-                    text-lg
-                    px-6
-                  "
-                    >
+                      to="/confirm" type="submit"
+                      className="btn-in text-black hover:btn-in hover:opacity-70 focus:outline-none w-full py-3 rounded-full text-lg px-6">
                       Ajukan Sewa
                     </Link>
                   </div>
