@@ -56,8 +56,9 @@ function History(){
                                             </li>
                                             <li id="action" className="flex-none w-auto">
                                                 <div className="flex gap-2">
-                                                    <Link to="/list" className="w-auto btn-in text-white shadow rounded-2xl p-2 hover:btn-in hover:opacity-90">Process Lanjut</Link>
-                                                    <button className="w-auto border border-black shadow rounded-2xl p-2 hover:btn-in hover:shadow-md">Bantuan</button>
+                                                    {/* <Link to="/list" className="w-auto btn-in text-white shadow rounded-2xl p-2 hover:btn-in hover:opacity-90">Process Lanjut</Link>
+                                                    <button className="w-auto border border-black shadow rounded-2xl p-2 hover:btn-in hover:shadow-md">Bantuan</button> */}
+                                                    <Link to="/return" className="w-auto bg-red-600 text-white shadow rounded-2xl p-2 px-3 hover:btn-in hover:opacity-90">Returned</Link>
                                                 </div>
                                             </li>
                                         </ul>

@@ -15,6 +15,7 @@ import Dashboard from "./components/Dashboard";
 import Profile from "./components/Profile";
 import Proof from "./components/Proof";
 import List from "./components/List";
+import Returned from "./components/Returned";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/proof" element={<Proof />} />
             <Route path="/list" element={<List />} />
+            <Route path="/return" element={<Returned />} />
           </Routes>
         </BrowserRouter>
       </StrictMode>
