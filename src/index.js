@@ -1,4 +1,4 @@
-import { StrictMode } from "react";
+import { StrictMode, useState } from "react";
 import { render } from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
@@ -18,6 +18,7 @@ import List from "./components/List";
 import Returned from "./components/Returned";
 
 function App() {
+  const [token, setToken] = useState("");
   return (
     <div>
       <StrictMode>
@@ -25,9 +26,9 @@ function App() {
           <Routes>
             <Route path="/category" element={<Category />} />
             <Route path="/" element={<LandingPage />} />
-            <Route path="/login" element={<Login />} />
+            <Route path="/login" element={<Login setToken={setToken} />} />
             <Route path="/register" element={<SignUp />} />
-            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/dashboard" element={<Dashboard token={token} />} />
             <Route path="/product" element={<ProductDetail />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/confirm" element={<Confirm />} />

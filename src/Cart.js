@@ -14,23 +14,23 @@ const items = [
 ];
 
 function Cart() {
-    const [rentDate, setRentDate] = useState('')
-    const [returnDate, setReturnDate] = useState('')
-    const [vanue, setVanue] = useState('')
-    //const history = useHistory();
-  
-    const saveRent = async(e) => {
-      e.preventDefault();
-      const rent = {rentDate, returnDate, vanue}
-      await fetch("", {
-        method: "POST", 
-        body: JSON.stringify(rent),
-        headers:{
-          'Content-Type': 'application/json'
-        }
-      })
-      history.push("/")
-    }
+  const [rentDate, setRentDate] = useState("");
+  const [returnDate, setReturnDate] = useState("");
+  const [vanue, setVanue] = useState("");
+  //const history = useHistory();
+
+  const saveRent = async (e) => {
+    e.preventDefault();
+    const rent = { rentDate, returnDate, vanue };
+    await fetch("", {
+      method: "POST",
+      body: JSON.stringify(rent),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    // history.push("/")
+  };
 
   return (
     <div>
@@ -105,10 +105,20 @@ function Cart() {
                   {items.map((item) => {
                     return (
                       <div>
-                        <div className="flex flex-start flex-wrap items-center mb-4 -mx-4" data-row="1">
+                        <div
+                          className="flex flex-start flex-wrap items-center mb-4 -mx-4"
+                          data-row="1"
+                        >
                           <div className="px-4 flex-none">
-                            <div className="" style={{ width: "90px", height: "90px" }}>
-                              <img src="" alt="chair-1" className="object-cover rounded-xl w-full h-full"/>
+                            <div
+                              className=""
+                              style={{ width: "90px", height: "90px" }}
+                            >
+                              <img
+                                src=""
+                                alt="chair-1"
+                                className="object-cover rounded-xl w-full h-full"
+                              />
                             </div>
                           </div>
                           <div className="px-4 w-auto flex-1 md:w-3/12 md:block">
@@ -178,9 +188,13 @@ function Cart() {
                       <label for="complete-name" className="text-sm mb-2">
                         Tanggal Persiapan
                       </label>
-                      <input data-input type="date" id="event-date" value={rentDate} 
-                        onChange={(e) => setRentDate(e.target.value)} 
-                        className="border-gray-200 border rounded-lg px-4 py-2 bg-white text-sm focus:border-blue-200 focus:outline-none" 
+                      <input
+                        data-input
+                        type="date"
+                        id="event-date"
+                        value={rentDate}
+                        onChange={(e) => setRentDate(e.target.value)}
+                        className="border-gray-200 border rounded-lg px-4 py-2 bg-white text-sm focus:border-blue-200 focus:outline-none"
                         placeholder="Masukkan tanggal persiapan acara"
                       />
                     </div>
@@ -189,7 +203,11 @@ function Cart() {
                       <label for="return-date" className="text-sm mb-2">
                         Tanggal Kembali
                       </label>
-                      <input data-input type="date" id="tanggal-kembali" value={returnDate}
+                      <input
+                        data-input
+                        type="date"
+                        id="tanggal-kembali"
+                        value={returnDate}
                         onChange={(e) => setReturnDate(e.target.value)}
                         className="border-gray-200 border rounded-lg px-4 py-2bg-white text-sm focus:border-blue-200 focus:outline-none"
                         placeholder="Masukkan tanggal pengembalian"
@@ -200,7 +218,11 @@ function Cart() {
                       <label for="address" className="text-sm mb-2">
                         Lokasi Acara
                       </label>
-                      <input data-input type="text" id="address" value={vanue}
+                      <input
+                        data-input
+                        type="text"
+                        id="address"
+                        value={vanue}
                         onChange={(e) => setVanue(e.target.value)}
                         className="border-gray-200 border rounded-lg px-4 py-2 bg-white text-sm focus:border-blue-200 focus:outline-none"
                         placeholder="Masukkan Lokasi Acara"
@@ -229,8 +251,10 @@ function Cart() {
                   </div>
                   <div className="text-center">
                     <Link
-                      to="/confirm" type="submit"
-                      className="btn-in text-black hover:btn-in hover:opacity-70 focus:outline-none w-full py-3 rounded-full text-lg px-6">
+                      to="/confirm"
+                      type="submit"
+                      className="btn-in text-black hover:btn-in hover:opacity-70 focus:outline-none w-full py-3 rounded-full text-lg px-6"
+                    >
                       Ajukan Sewa
                     </Link>
                   </div>

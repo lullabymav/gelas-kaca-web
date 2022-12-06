@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 
 // const profileList = ["Akun Saya", "Status Penyewaan Saya", "Riwayat Penyewaan"];
 
-const data = {
-  username: "Andrew"
-}
+// const data = {
+//   username: "Andrew"
+// }
 
-function NavDashboard() {
+function NavDashboard(props) {
   const [profile, setProfile] = useState(false);
 
   return (
@@ -45,7 +45,7 @@ function NavDashboard() {
                 console.log(profile);
               }}
             >
-              Hi, {data.username}
+              Hi, {props.name}
               <svg
                 class="-mr-1 ml-2 h-5 w-5"
                 xmlns="http://www.w3.org/2000/svg"
@@ -90,7 +90,7 @@ function NavDashboard() {
               >
                 Status Penyewaan
               </Link>
-              <form method="POST" action="/" role="none">
+              <Link to="/dashboard">
                 <button
                   type="submit"
                   class="text-gray-600 block w-full px-4 py-2 text-left text-sm hover:text-black"
@@ -100,7 +100,7 @@ function NavDashboard() {
                 >
                   Sign out
                 </button>
-              </form>
+              </Link>
             </div>
           </div>
         </div>
