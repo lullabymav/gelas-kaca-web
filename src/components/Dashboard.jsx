@@ -33,19 +33,9 @@ function Dashboard({ token }) {
         <p className="text-sm font-bold text-center m-6">Top Categories</p>
         <div className="category-card-item grid grid-cols-1 gap-6 md:grid-cols-6 sm:grid-cols-3">
           <Categories />
-          <Categories />
-          <Categories />
-          <Categories />
-          <Categories />
-          <Categories />
         </div>
         <div className="category-card-item grid grid-cols-1 gap-6 md:grid-cols-6 sm:grid-cols-3">
-          <Categories />
-          <Categories />
-          <Categories />
-          <Categories />
-          <Categories />
-          <Categories />
+          <div></div>
         </div>
         <p className="text-sm font-bold text-center m-6">Top Product</p>
         <div className="product-card-item grid grid-cols-1 gap-6 md:grid-cols-3">
