@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import signUpPic from "./../asset/signup.png";
-import logo from "./../asset/logo.png";
+import logo from "./../asset/logo-M.png";
 import "./../index.css";
 // import api from './../api/api'
 import axios from "axios";
