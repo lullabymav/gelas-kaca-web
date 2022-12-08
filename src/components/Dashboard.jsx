@@ -6,11 +6,15 @@ import Categories from "./Categories";
 import Product from "./Product";
 import Footer from "./Footer";
 import Carousel from "./Carousel";
+import axios from "axios";
 
 function Dashboard({ token }) {
   const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(false);
   const [userData, setUserData] = useState({});
+  const [category, setCategory] = useState([]);
+  const [product, setProduct] = useState([]);
+
   const getDataToken = async () => {
     try {
       const decoded = await jwtDecode(token);
@@ -20,8 +24,34 @@ function Dashboard({ token }) {
       navigate("/login");
     }
   };
+
+  const getCategory = async () => {
+    try {
+      await axios
+        .get("http://localhost:8080/api/categorys")
+        .then((response) => {
+          setCategory(() => response.data);
+          console.log(category[0].image);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getProduct = async () => {
+    try {
+      await axios.get("http://localhost:8080/api/products").then((response) => {
+        setProduct(() => response.data);
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     getDataToken();
+    getCategory();
+    getProduct();
   }, []);
 
   let firstName = String(userData.name).split(" ")[0];
@@ -32,36 +62,25 @@ function Dashboard({ token }) {
         {/* <Carousel /> */}
         <p className="text-sm font-bold text-center m-6">Top Categories</p>
         <div className="category-card-item grid grid-cols-1 gap-6 md:grid-cols-6 sm:grid-cols-3">
-          <Categories />
-        </div>
-        <div className="category-card-item grid grid-cols-1 gap-6 md:grid-cols-6 sm:grid-cols-3">
-          <div></div>
+          {category.map((item) => {
+            return <Categories image={item.image} categoryName={item.name} />;
+          })}
         </div>
         <p className="text-sm font-bold text-center m-6">Top Product</p>
         <div className="product-card-item grid grid-cols-1 gap-6 md:grid-cols-3">
+          {product.map((item) => {
+            return (
+              <Product
+                image={item.image}
+                name={item.name}
+                price={item.price}
+                id={item.id}
+              />
+            );
+          })}
+          {/* <Product />
           <Product />
-          <Product />
-          <Product />
-        </div>
-        <div className="product-card-item grid grid-cols-1 gap-6 md:grid-cols-3">
-          <Product />
-          <Product />
-          <Product />
-        </div>
-        <div className="product-card-item grid grid-cols-1 gap-6 md:grid-cols-3">
-          <Product />
-          <Product />
-          <Product />
-        </div>
-        <div className="product-card-item grid grid-cols-1 gap-6 md:grid-cols-3">
-          <Product />
-          <Product />
-          <Product />
-        </div>
-        <div className="product-card-item grid grid-cols-1 gap-6 md:grid-cols-3">
-          <Product />
-          <Product />
-          <Product />
+          <Product /> */}
         </div>
         {/* Page Navigation */}
         <div className="flex justify-center">

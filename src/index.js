@@ -24,20 +24,20 @@ function App() {
       <StrictMode>
         <BrowserRouter>
           <Routes>
-            <Route path="/category" element={<Category />} />
+            <Route path="/category" element={<Category token={token} />} />
             <Route path="/" element={<LandingPage />} />
             <Route path="/login" element={<Login setToken={setToken} />} />
             <Route path="/register" element={<SignUp />} />
             <Route path="/dashboard" element={<Dashboard token={token} />} />
-            <Route path="/product" element={<ProductDetail />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/confirm" element={<Confirm />} />
-            <Route path="/success" element={<Success />} />
-            <Route path="/history" element={<History />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/proof" element={<Proof />} />
-            <Route path="/list" element={<List />} />
-            <Route path="/return" element={<Returned />} />
+            <Route path="/product" element={<ProductDetail token={token} />} />
+            <Route path="/cart" element={<Cart token={token} />} />
+            <Route path="/confirm" element={<Confirm token={token} />} />
+            <Route path="/success" element={<Success token={token} />} />
+            <Route path="/history" element={<History token={token} />} />
+            <Route path="/profile" element={<Profile token={token} />} />
+            <Route path="/proof" element={<Proof token={token} />} />
+            <Route path="/list" element={<List token={token} />} />
+            <Route path="/return" element={<Returned token={token} />} />
           </Routes>
         </BrowserRouter>
       </StrictMode>
