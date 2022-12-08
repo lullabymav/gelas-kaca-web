@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import loginPic from "./../asset/login-pic.png";
-import logo from "./../asset/logo.png";
+import logo from "./../asset/logo-M.png";
 import "./../index.css";
 import axios from "axios";
 

@@ -2,7 +2,7 @@ import "./../index.css";
 import { Link } from "react-router-dom";
 import NavRegist from "./NavRegist";
 import NavDashboard from "./NavDashboard";
-import logo from "./../asset/logo.png";
+import logo from "./../asset/logo-M.png";
 
 function Navbar(props) {
   const firstName = props.name;
