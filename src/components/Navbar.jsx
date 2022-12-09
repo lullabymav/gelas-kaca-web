@@ -14,7 +14,7 @@ function Navbar(props) {
           <Link to="/">
             <img src={logo} className="h-10" alt="logo-alt" />
           </Link>
-          <ul className="flex m-3 ml-12 text-xs font-semibold gap-8">
+          <ul className="flex m-5 ml-12 text-xs font-semibold gap-8">
             <li>
               <Link to="/category">CATEGORY</Link>
             </li>
