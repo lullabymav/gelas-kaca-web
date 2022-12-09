@@ -5,7 +5,7 @@ import category_1 from "./../asset/category_1.jpg";
 function Product(props) {
   return (
     <div>
-      <Link to="/product">
+      <Link to={`/product/${props.id}`}>
         <section className="card h-96 rounded-2xl mb-6 md:p-4">
           <div>
             <img

@@ -1,41 +1,102 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import jwtDecode from "jwt-decode";
 
-const items = [
-  {
-    id: 1,
-    name: "Speaker Kecil",
-    type: "Sound System",
-    kuantitas: 1,
-    price: 50000,
-  },
-];
+// const items = [
+//   {
+//     id: 1,
+//     name: "Speaker Kecil",
+//     type: "Sound System",
+//     kuantitas: 1,
+//     price: 50000,
+//   },
+// ];
 
-function Cart() {
-  const [rentDate, setRentDate] = useState("");
-  const [returnDate, setReturnDate] = useState("");
+function Cart({ token }) {
+  const rentInitial = {
+    address: "",
+    rent_start: "",
+    rent_end: "",
+    state: 0,
+  };
+  // const [rentDate, setRentDate] = useState("");
+  // const [returnDate, setReturnDate] = useState("");
   const [vanue, setVanue] = useState("");
+  const [items, setItems] = useState([]);
+  const [rent, setRent] = useState(rentInitial);
+  const [isLogin, setIsLogin] = useState(false);
+  const [userData, setUserData] = useState({});
+  const navigate = useNavigate();
   //const history = useHistory();
 
-  const saveRent = async (e) => {
-    e.preventDefault();
-    const rent = { rentDate, returnDate, vanue };
-    await fetch("", {
-      method: "POST",
-      body: JSON.stringify(rent),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    // history.push("/")
+  const getDataToken = async () => {
+    try {
+      const decoded = await jwtDecode(token);
+      setUserData(await decoded);
+      setIsLogin(true);
+    } catch {
+      navigate("/login");
+    }
   };
+
+  function inputHandler(evt) {
+    const value = evt.target.value;
+    setRent({
+      ...rent,
+      [evt.target.name]: value,
+    });
+  }
+
+  const getCart = async () => {
+    try {
+      await axios.get("http://localhost:8080/api/carts").then((response) => {
+        setItems(() => response.data);
+        console.log(items);
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    getDataToken();
+    getCart();
+  }, []);
+
+  const removeItem = async (id) => {
+    try {
+      await axios
+        .delete(`http://localhost:8080/api/carts/${id}`)
+        .then((res) => {
+          console.log(res);
+        });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const submitRent = async (e) => {
+    e.preventDefault();
+    const data = { ...rent, userId: userData.id };
+    try {
+      await axios.post(`http://localhost:8080/api/rents/`, data).then((res) => {
+        navigate("/list");
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  let firstName = String(userData.name).split(" ")[0];
 
   return (
     <div>
       <div className="my-8 mx-12">
-        <Navbar />
+        <Navbar name={firstName} isLogin={isLogin} />
       </div>
       <div>
         <section className="bg-gray-100 py-8 px-12">
@@ -137,7 +198,7 @@ function Cart() {
                           <div className="px-4 w-auto flex-none md:flex-1 md:w-3/12 hidden md:block md:text-center">
                             <div className="">
                               <h6 className="font-semibold text-lg">
-                                {item.kuantitas}
+                                {item.qty}
                               </h6>
                             </div>
                           </div>
@@ -158,6 +219,10 @@ function Cart() {
                           px-3
                           py-1
                         "
+                                onClick={() => {
+                                  removeItem(item.id);
+                                  getCart();
+                                }}
                               >
                                 X
                               </button>
@@ -179,21 +244,22 @@ function Cart() {
               </div>
               <div className="w-full md:px-4 md:w-4/12" id="shipping-detail">
                 <div className="bg-gray-100 px-4 py-6 md:p-8 md:rounded-3xl">
-                  <form onSubmit={saveRent}>
+                  <form onSubmit={submitRent}>
                     <div className="flex flex-start mb-6">
                       <h3 className="text-2xl font-semibold">Detail Events</h3>
                     </div>
 
                     <div className="flex flex-col mb-4">
                       <label for="complete-name" className="text-sm mb-2">
-                        Tanggal Persiapan
+                        Tanggal Penyewaan
                       </label>
                       <input
                         data-input
                         type="date"
                         id="event-date"
-                        value={rentDate}
-                        onChange={(e) => setRentDate(e.target.value)}
+                        name="rent_start"
+                        value={rent.rent_start}
+                        onChange={inputHandler}
                         className="border-gray-200 border rounded-lg px-4 py-2 bg-white text-sm focus:border-blue-200 focus:outline-none"
                         placeholder="Masukkan tanggal persiapan acara"
                       />
@@ -201,15 +267,16 @@ function Cart() {
 
                     <div className="flex flex-col mb-4">
                       <label for="return-date" className="text-sm mb-2">
-                        Tanggal Kembali
+                        Tanggal Pengembalian
                       </label>
                       <input
                         data-input
                         type="date"
                         id="tanggal-kembali"
-                        value={returnDate}
-                        onChange={(e) => setReturnDate(e.target.value)}
-                        className="border-gray-200 border rounded-lg px-4 py-2bg-white text-sm focus:border-blue-200 focus:outline-none"
+                        name="rent_end"
+                        value={rent.rent_end}
+                        onChange={inputHandler}
+                        className="border-gray-200 border rounded-lg px-4 py-2 bg-white text-sm focus:border-blue-200 focus:outline-none"
                         placeholder="Masukkan tanggal pengembalian"
                       />
                     </div>
@@ -222,42 +289,53 @@ function Cart() {
                         data-input
                         type="text"
                         id="address"
-                        value={vanue}
-                        onChange={(e) => setVanue(e.target.value)}
+                        name="address"
+                        value={rent.address}
+                        onChange={inputHandler}
                         className="border-gray-200 border rounded-lg px-4 py-2 bg-white text-sm focus:border-blue-200 focus:outline-none"
                         placeholder="Masukkan Lokasi Acara"
                       />
                     </div>
-                  </form>
 
-                  <div className="my-8">
-                    <div className="flex flex-row justify-between">
-                      <div className="">Subtotal</div>
-                      <div>Rp50.000</div>
-                    </div>
-                    <div className="flex flex-row justify-between">
-                      <div className="">Delivery Fee</div>
-                      <div>Rp30.000</div>
-                    </div>
-                    <hr />
-                    <div className="flex flex-row justify-between">
-                      <div className="text-lg font-semibold read-more">
-                        Total
+                    <div className="my-8 flex flex-col gap-2">
+                      <div className="flex flex-row justify-between text-sm">
+                        <div className="">Total Produk</div>
+                        {/* <div>Rp{item.subtotal}</div> */}
+                        <div>Rp60000</div>
                       </div>
-                      <div className="text-lg font-semibold read-more">
-                        Rp80.000
+                      <div className="flex flex-row justify-between text-sm">
+                        <div className="">Total Ongkos Kirim</div>
+                        {/* <div>Rp{item.delivery}</div> */}
+                        <div>Rp12000</div>
+                      </div>
+                      <div className="flex flex-row justify-between text-sm">
+                        <div className="">Biaya Layanan</div>
+                        {/* <div>Rp{item.service}</div> */}
+                        <div>Rp5000</div>
+                      </div>
+                      <hr />
+                      <div className="flex flex-row justify-between">
+                        <div className="text-lg font-semibold read-more">
+                          Total
+                        </div>
+                        {/* <div className="text-lg font-semibold read-more">
+                                    Rp{item.total}
+                                  </div> */}
+                        <div className="text-xl font-semibold read-more">
+                          Rp79000
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="text-center">
-                    <Link
-                      to="/confirm"
-                      type="submit"
-                      className="btn-in text-black hover:btn-in hover:opacity-70 focus:outline-none w-full py-3 rounded-full text-lg px-6"
-                    >
-                      Ajukan Sewa
-                    </Link>
-                  </div>
+                    <div className="text-center">
+                      <Link
+                        to="/proof"
+                        type="submit"
+                        className="btn-in text-black hover:btn-in hover:opacity-70 focus:outline-none w-full py-3 rounded-full px-6"
+                      >
+                        Buat Penyewaan
+                      </Link>
+                    </div>
+                  </form>
                 </div>
               </div>
             </div>

@@ -83,7 +83,7 @@ function SignUp() {
               />
             </Link>
             <h1 className="font-sans text-3xl font-bold">Sign Up</h1>
-            <p className="SignUp-detail-p mt-1 mb-8">Creat your account</p>
+            <p className="SignUp-detail-p mt-1 mb-8">Create your account</p>
           </section>
           <section className="SignUp-card bg-white px-6 py-8 rounded-2xl">
             <form onSubmit={submitHandler}>
