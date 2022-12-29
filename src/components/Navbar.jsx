@@ -7,11 +7,12 @@ import logo from "./../asset/logo-M.png";
 function Navbar(props) {
   const firstName = props.name;
   const isLogin = props.isLogin;
+
   return (
     <div>
       <nav className="Navbar flex justify-between">
         <section className="flex">
-          <Link to="/">
+          <Link to={isLogin ? "/dashboard" : "/"}>
             <img src={logo} className="h-10" alt="logo-alt" />
           </Link>
           <ul className="flex m-5 ml-12 text-xs font-semibold gap-8">
@@ -41,7 +42,7 @@ function Navbar(props) {
               d="M15.75 15.75l-2.489-2.489m0 0a3.375 3.375 0 10-4.773-4.773 3.375 3.375 0 004.774 4.774zM21 12a9 9 0 11-18 0 9 9 0 0118 0z"
             />
           </svg>
-          {props.isLogin ? <NavDashboard name={firstName} /> : <NavRegist />}
+          {isLogin ? <NavDashboard name={firstName} /> : <NavRegist />}
           {/* <NavRegist /> */}
           {/* <NavDashboard name={firstName} /> */}
           {/* Setelah regist, NavRegist akan berganti ke username customer */}

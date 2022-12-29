@@ -16,7 +16,7 @@ import jwtDecode from "jwt-decode";
 //   },
 // ];
 
-function Cart({ token }) {
+function Cart({ token, cartId }) {
   const rentInitial = {
     address: "",
     rent_start: "",
@@ -30,6 +30,7 @@ function Cart({ token }) {
   const [rent, setRent] = useState(rentInitial);
   const [isLogin, setIsLogin] = useState(false);
   const [userData, setUserData] = useState({});
+  const [total, setTotal] = useState(0);
   const navigate = useNavigate();
   //const history = useHistory();
 
@@ -53,10 +54,16 @@ function Cart({ token }) {
 
   const getCart = async () => {
     try {
-      await axios.get("http://localhost:8080/api/carts").then((response) => {
-        setItems(() => response.data);
-        console.log(items);
-      });
+      await axios
+        .get(`http://localhost:8080/api/carts/${cartId}`)
+        .then((response) => {
+          console.log(response.data.products);
+          setItems(response.data.products);
+          response.data.products.map((item) => {
+            const subTotal = item.price * item.qty;
+            return setTotal((total) => total + subTotal);
+          });
+        });
     } catch (err) {
       console.log(err);
     }
@@ -69,8 +76,11 @@ function Cart({ token }) {
 
   const removeItem = async (id) => {
     try {
+      const data = {
+        cartId: null,
+      };
       await axios
-        .delete(`http://localhost:8080/api/carts/${id}`)
+        .put(`http://localhost:8080/api/products/${id}`, data)
         .then((res) => {
           console.log(res);
         });
@@ -83,8 +93,9 @@ function Cart({ token }) {
     e.preventDefault();
     const data = { ...rent, userId: userData.id };
     try {
-      await axios.post(`http://localhost:8080/api/rents/`, data).then((res) => {
-        navigate("/list");
+      await axios.post("http://localhost:8080/api/rents", data).then((res) => {
+        console.log(res);
+        navigate("/proof");
       });
     } catch (err) {
       console.log(err);
@@ -135,11 +146,6 @@ function Cart({ token }) {
 
                 <div className="border-b border-gray-200 mb-4 hidden md:block">
                   <div className="flex flex-start items-center pb-2 -mx-4">
-                    <div className="px-4 flex-none">
-                      <div className="" style={{ width: "90px" }}>
-                        <h6>Foto</h6>
-                      </div>
-                    </div>
                     <div className="px-4 w-4/12">
                       <div className="">
                         <h6>Nama Barang</h6>
@@ -170,18 +176,6 @@ function Cart({ token }) {
                           className="flex flex-start flex-wrap items-center mb-4 -mx-4"
                           data-row="1"
                         >
-                          <div className="px-4 flex-none">
-                            <div
-                              className=""
-                              style={{ width: "90px", height: "90px" }}
-                            >
-                              <img
-                                src=""
-                                alt="chair-1"
-                                className="object-cover rounded-xl w-full h-full"
-                              />
-                            </div>
-                          </div>
                           <div className="px-4 w-auto flex-1 md:w-3/12 md:block">
                             <div className="">
                               <h6 className="font-semibold text-lg md:text-xl leading-8">
@@ -221,6 +215,7 @@ function Cart({ token }) {
                         "
                                 onClick={() => {
                                   removeItem(item.id);
+                                  setTotal(0);
                                   getCart();
                                 }}
                               >
@@ -301,7 +296,7 @@ function Cart({ token }) {
                       <div className="flex flex-row justify-between text-sm">
                         <div className="">Total Produk</div>
                         {/* <div>Rp{item.subtotal}</div> */}
-                        <div>Rp60000</div>
+                        <div>Rp{total}</div>
                       </div>
                       <div className="flex flex-row justify-between text-sm">
                         <div className="">Total Ongkos Kirim</div>
@@ -322,18 +317,19 @@ function Cart({ token }) {
                                     Rp{item.total}
                                   </div> */}
                         <div className="text-xl font-semibold read-more">
-                          Rp79000
+                          Rp{total + 12000 + 5000}
                         </div>
                       </div>
                     </div>
                     <div className="text-center">
-                      <Link
-                        to="/proof"
+                      {/* <Link to="/proof"> */}
+                      <button
                         type="submit"
                         className="btn-in text-black hover:btn-in hover:opacity-70 focus:outline-none w-full py-3 rounded-full px-6"
                       >
                         Buat Penyewaan
-                      </Link>
+                      </button>
+                      {/* </Link> */}
                     </div>
                   </form>
                 </div>

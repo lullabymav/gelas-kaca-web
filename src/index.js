@@ -19,21 +19,28 @@ import Returned from "./components/Returned";
 
 function App() {
   const [token, setToken] = useState("");
+  const [cartId, setCartId] = useState(0);
   return (
     <div>
       <StrictMode>
         <BrowserRouter>
           <Routes>
             <Route path="/category" element={<Category token={token} />} />
-            <Route path="/" element={<LandingPage />} />
+            <Route path="/" element={<LandingPage setCartId={setCartId} />} />
             <Route path="/login" element={<Login setToken={setToken} />} />
             <Route path="/register" element={<SignUp />} />
-            <Route path="/dashboard" element={<Dashboard token={token} />} />
+            <Route
+              path="/dashboard"
+              element={<Dashboard token={token} cartId={cartId} />}
+            />
             <Route
               path="/product/:id"
-              element={<ProductDetail token={token} />}
+              element={<ProductDetail token={token} cartId={cartId} />}
             />
-            <Route path="/cart" element={<Cart token={token} />} />
+            <Route
+              path="/cart"
+              element={<Cart token={token} cartId={cartId} />}
+            />
             <Route path="/confirm" element={<Confirm token={token} />} />
             <Route path="/success" element={<Success token={token} />} />
             <Route path="/history" element={<History token={token} />} />

@@ -4,6 +4,8 @@ import Related from "./components/Related";
 import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import jwtDecode from "jwt-decode";
 // const data = {
 //   productName: "Speaker Kecil Beta Three",
 //   productPrice: "1.000.000",
@@ -28,11 +30,27 @@ import axios from "axios";
 
 const initialState = 1;
 
-function ProductDetail() {
+function ProductDetail({ token, cartId }) {
   const { id } = useParams();
+  const [gallery, setGallery] = useState({});
   const [detail, setDetail] = useState([]);
   const [qty, setQty] = useState(initialState);
   const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
+  const [isLogin, setIsLogin] = useState(false);
+  const [userData, setUserData] = useState({});
+
+  const getDataToken = async () => {
+    try {
+      const decoded = await jwtDecode(token);
+      setUserData(await decoded);
+      setIsLogin(true);
+    } catch {
+      navigate("/login");
+    }
+  };
+
+  let firstName = String(userData.name).split(" ")[0];
 
   const getDetail = async () => {
     try {
@@ -40,6 +58,24 @@ function ProductDetail() {
         .get(`http://localhost:8080/api/products/${id}`)
         .then((res) => {
           setDetail(() => res.data);
+          setGallery(res.data.productGalleries[0]);
+        });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const addToCart = async () => {
+    try {
+      const data = {
+        cartId: cartId,
+        qty: qty,
+      };
+      await axios
+        .put(`http://localhost:8080/api/products/${id}`, data)
+        .then((res) => {
+          console.log(res);
+          navigate("/cart");
         });
     } catch (err) {
       console.log(err);
@@ -47,13 +83,14 @@ function ProductDetail() {
   };
 
   useEffect(() => {
+    getDataToken();
     getDetail();
   }, []);
   console.log(detail);
   return (
     <div>
       <div className="my-8 mx-12">
-        <Navbar />
+        <Navbar name={firstName} isLogin={isLogin} />
       </div>
 
       <div>
@@ -84,21 +121,10 @@ function ProductDetail() {
             </div>
             <div className="flex-1">
               <div className="slider">
-                <div className="thumbnail">
-                  <div className="px-2">
-                    <div>
-                      <img
-                        src=""
-                        alt="front"
-                        className="object-cover w-full h-full rounded-lg"
-                      />
-                    </div>
-                  </div>
-                </div>
                 <div className="preview">
                   <div className="item rounded-lg h-full overflow-hidden">
                     <img
-                      src=""
+                      src={gallery.path}
                       alt="front"
                       className="object-cover w-full h-full rounded-lg"
                     />
@@ -212,11 +238,12 @@ function ProductDetail() {
                     Tambahkan ke Keranjang
                   </button>
                 </Link>
-                <Link to="/cart">
-                  <button className="transition-all duration-200 btn-in rounded-full px-8 py-1 mt-4 inline-flex hover:btn-in hover:opacity-70">
-                    Sewa Sekarang
-                  </button>
-                </Link>
+                <button
+                  className="transition-all duration-200 btn-in rounded-full px-8 py-1 mt-4 inline-flex hover:btn-in hover:opacity-70"
+                  onClick={addToCart}
+                >
+                  Sewa Sekarang
+                </button>
               </section>
             </div>
           </div>

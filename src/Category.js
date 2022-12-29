@@ -10,18 +10,33 @@ import jwtDecode from "jwt-decode";
 function Category({ token }) {
   const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(false);
+  const [userId, setUserId] = useState(0);
   const [userData, setUserData] = useState({});
   const [products, setProducts] = useState([]);
 
   const getDataToken = async () => {
     try {
       const decoded = await jwtDecode(token);
-      setUserData(await decoded);
+      setUserId(await decoded);
       setIsLogin(true);
     } catch {
       navigate("/login");
     }
   };
+
+  const getUserData = async () => {
+    try {
+      await axios
+        .get(`http://localhost:8080/api/users/${userId.id}`)
+        .then((response) => {
+          setUserData(() => response.data);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const firstName = String(userData.name).split(" ")[0];
 
   const getProducts = () => {
     try {
@@ -35,10 +50,9 @@ function Category({ token }) {
 
   useEffect(() => {
     getDataToken();
+    getUserData();
     getProducts();
   }, []);
-
-  let firstName = String(userData.name).split(" ")[0];
 
   return (
     <div className="my-8 mx-12">

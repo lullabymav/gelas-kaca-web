@@ -8,12 +8,13 @@ import Footer from "./Footer";
 import Carousel from "./Carousel";
 import axios from "axios";
 
-function Dashboard({ token }) {
+function Dashboard({ token, cartId }) {
   const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(false);
   const [userData, setUserData] = useState({});
   const [category, setCategory] = useState([]);
   const [product, setProduct] = useState([]);
+  const [data, setData] = useState([]);
 
   const getDataToken = async () => {
     try {
@@ -24,6 +25,8 @@ function Dashboard({ token }) {
       navigate("/login");
     }
   };
+
+  let firstName = String(userData.name).split(" ")[0];
 
   const getCategory = async () => {
     try {
@@ -42,9 +45,37 @@ function Dashboard({ token }) {
     try {
       await axios.get("http://localhost:8080/api/products").then((response) => {
         setProduct(() => response.data);
+        response.data.map((item, index) => {
+          product[index].path = item.productGalleries[0].path;
+          return setProduct(product);
+        });
+        // response.data.map((item) => {
+        //   return gallery.push(item.productGalleries[0]);
+        // });
+        // gallery.map((item, index) => {
+        //   return (product[index].path = item.path);
+        // });
+        // setProduct(product);
       });
     } catch (error) {
       console.log(error);
+    }
+  };
+
+  const updateCart = async () => {
+    const userId = userData.id;
+    const data = {
+      userId: userId,
+    };
+    try {
+      console.log(data);
+      await axios
+        .put(`http://localhost:8080/api/carts/${cartId}`, data)
+        .then((res) => {
+          console.log(res);
+        });
+    } catch (err) {
+      console.log(err);
     }
   };
 
@@ -52,9 +83,9 @@ function Dashboard({ token }) {
     getDataToken();
     getCategory();
     getProduct();
+    updateCart();
   }, []);
 
-  let firstName = String(userData.name).split(" ")[0];
   return (
     <div>
       <div className="my-8 mx-12">
@@ -71,7 +102,7 @@ function Dashboard({ token }) {
           {product.map((item) => {
             return (
               <Product
-                image={item.image}
+                image={item.path}
                 name={item.name}
                 price={item.price}
                 id={item.id}
